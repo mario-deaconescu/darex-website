@@ -6,6 +6,8 @@ import {theme} from "./theme.ts";
 import ScrollProvider from "./contexts/ScrollProvider.tsx";
 import NameProvider from "./contexts/NameProvider.tsx";
 
+const base = import.meta.env.BASE_URL;
+
 function App() {
 
     return (
@@ -15,7 +17,9 @@ function App() {
                     <ScrollProvider>
                         <Navbar/>
                         <Routes>
-                            <Route path='/' element={<Home/>}/>
+                            <Route path={base}>
+                                <Route index={true} element={<Home/>}/>
+                            </Route>
                         </Routes>
                     </ScrollProvider>
                 </NameProvider>
